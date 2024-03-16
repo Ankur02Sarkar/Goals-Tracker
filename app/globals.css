@@ -74,3 +74,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+div[data-radix-popper-content-wrapper]{
+  top: auto !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  width: fit-content;
+}
