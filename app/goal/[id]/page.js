@@ -35,7 +35,7 @@ const Page = ({ params }) => {
   }
 
   return (
-    <div className="flex flex-row justify-center items-center text-center m-auto gap-8">
+    <div className="flex sm:flex-row flex-col justify-center items-center text-center m-auto gap-8">
       <div className="flex flex-col gap-4 outline outline-1 outline-gray-500 p-4 rounded-md">
         <label
           className="text-sm font-medium text-black dark:text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
