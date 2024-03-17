@@ -1,5 +1,4 @@
 "use client";
-import * as React from "react";
 import { addDays, format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 
@@ -18,12 +17,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-const page = () => {
-  const [date, setDate] = React.useState();
-  const [name, setName] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [price, setPrice] = React.useState("");
-  const [link, setLink] = React.useState("");
+import { useState } from "react";
+const Page = () => {
+  const [date, setDate] = useState();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [link, setLink] = useState("");
 
   const DatePickerWithPresets = () => {
     return (
@@ -178,4 +178,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

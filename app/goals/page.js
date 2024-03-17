@@ -1,8 +1,8 @@
 "use client";
 import { CardHoverEffectDemo } from "@/components/CardHoverEffectDemo";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     const loadedGoals = JSON.parse(localStorage.getItem("allGoals") || "[]");
@@ -16,4 +16,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
