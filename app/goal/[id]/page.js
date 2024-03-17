@@ -2,8 +2,14 @@
 
 import { ThreeDCardDemo } from "@/components/ThreeDCardDemo";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import React, { useEffect, useState } from "react";
+
+const updateGoalInLocalStorage = (updatedGoal) => {
+  const allGoals = JSON.parse(localStorage.getItem("allGoals"));
+  const goalIndex = allGoals.findIndex((goal) => goal.id === updatedGoal.id);
+  allGoals[goalIndex] = updatedGoal;
+  localStorage.setItem("allGoals", JSON.stringify(allGoals));
+};
 
 const Page = ({ params }) => {
   const [goalId, setGoalId] = useState();
@@ -12,15 +18,17 @@ const Page = ({ params }) => {
 
   useEffect(() => {
     setGoalId(params.id);
-
-    // Retrieve allGoals from local storage
     const allGoals = JSON.parse(localStorage.getItem("allGoals"));
-
-    // Find the goal with matching id
     const foundGoal = allGoals.find((goal) => goal.id === parseInt(params.id));
-
     setGoal(foundGoal);
   }, [params]);
+
+  const handleAddAmount = () => {
+    const updatedGoal = { ...goal, price: goal.price - addAmount };
+    updateGoalInLocalStorage(updatedGoal);
+    setGoal(updatedGoal);
+    setAddAmount(0);
+  };
 
   if (!goal) {
     return <p>Loading...</p>;
@@ -44,7 +52,7 @@ const Page = ({ params }) => {
             onChange={(e) => setAddAmount(e.target.value)}
             placeholder="Add Amount Saved"
           />
-          <Button>Add</Button>
+          <Button onClick={handleAddAmount}>Add</Button>
         </div>
       </div>
       <ThreeDCardDemo goal={goal} />
